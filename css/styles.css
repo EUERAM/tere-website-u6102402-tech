@@ -6,6 +6,7 @@
   --light-gray: rgba(158, 157, 162, 1);
   --gray: rgba(139, 139, 165, 1);
   --dark-gray: rgba(39, 32, 66, 1);
+  --control-height: 48px;
   --background: rgba(249, 249, 249, 1);
 }
 h1 {
@@ -16,6 +17,29 @@ h1 {
   line-height: 65.91px;
   text-decoration: none;
   text-transform: none;
+}
+
+/* Hero title styling */
+.hero-title {
+  color: var(--Black, #000);
+  font-family: Inter;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 65.91px; /* 102.985% */
+}
+
+/* Description Hero (subtitle) */
+.hero-subtitle {
+  color: var(--Light-Gray, #9e9da2);
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 33px; /* 137.5% */
+  width: 550px;
+  height: 120px;
+  flex-shrink: 0;
 }
 p {
   font-size: 18px;
@@ -85,6 +109,9 @@ h3 {
 /* HEADER */
 header {
   padding-top: 80px;
+}
+.hero {
+  margin-top: 90px; /* space between header and hero */
 }
 .container {
   width: 1280px;
@@ -170,4 +197,188 @@ header {
 }
 .text-right .number {
   margin-left: auto;
+}
+
+/* LINK (deep container) */
+.link {
+  padding: 60px 0;
+}
+.link .deep {
+  background: var(--green);
+  border-radius: 5px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+.link .link-inner {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  align-items: stretch; /* let the row height be the tallest column (the description)
+                          so controls can stretch to match */
+  gap: 24px;
+  padding: 45px 70px;
+}
+.link .descriptions {
+  color: white; /* override lighter gray to read on green */
+  margin: 0;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 33px; /* 137.5% */
+}
+.link-form {
+  display: flex;
+  align-items: center; /* center controls vertically now that they have fixed height */
+  justify-self: end; /* place the form at the right column */
+  gap: 12px;
+}
+.link-input {
+  height: var(--control-height);
+  padding: 0 16px;
+  border-radius: 5px;
+  border: none;
+  width: 499px;
+  font-size: 16px;
+  color: #1a1a1a;
+  font-family: Inter;
+  font-weight: 600;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+.link-btn {
+  height: var(--control-height);
+  border-radius: 5px;
+  border: none;
+  background: var(--dark-gray);
+  color: white;
+
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 18px; /* horizontal padding only; vertical space comes from height */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 260px;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 900px) {
+  .container {
+    width: calc(100% - 140px); /* account for 70px left + 70px right padding */
+  }
+  .link .link-inner {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    text-align: left;
+  }
+  .link-form {
+    justify-self: start;
+    width: 100%;
+    margin-top: 12px;
+  }
+  .link-input {
+    width: 100%;
+  }
+}
+
+/* LAST DAY two-column layout */
+.last-day.two-col {
+  display: flex;
+  gap: 24px;
+  align-items: stretch; /* make columns equal height so we can align buttons to image bottom */
+  justify-content: space-between;
+}
+.last-day.two-col .left-col,
+.last-day.two-col .right-col {
+  box-sizing: border-box;
+  padding: 20px 0;
+}
+/* equal width by default; adjust via flex values if you want different ratios */
+.last-day.two-col .left-col {
+  flex: 1;
+}
+.last-day.two-col .right-col {
+  flex: 1;
+}
+
+/* ensure the image in the right column is anchored to the bottom */
+.last-day.two-col .right-col {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* place buttons at the bottom of the left column and arrange horizontally */
+.last-day.two-col .left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* keeps .btn-row at the bottom */
+}
+.last-day .btn-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap; /* allow wrapping on very small screens */
+}
+
+/* button style matching site's dark button look */
+.last-day .btn {
+  background: var(--dark-gray);
+  color: rgb(165, 18, 18);
+  border: none;
+  border-radius: 5px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* make .link-btn inside last-day behave like regular buttons (not height:100%) */
+/* left-column buttons will use the global .link-btn rules to match exactly */
+
+@media (max-width: 900px) {
+  .last-day .btn-row {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 900px) {
+  .last-day.two-col {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* hero image in right column */
+.last-day .hero-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* icon inside buttons */
+.last-day .btn-icon {
+  height: calc(var(--control-height) - 5px); /* slightly smaller than control */
+  width: auto;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Specific dimensions and layout for the two left-column buttons */
+.last-day .link-btn {
+  display: flex;
+  width: 260px;
+  height: 66.773px;
+  padding: 32px 28px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }

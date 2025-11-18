@@ -79,6 +79,18 @@ h2 {
   text-transform: uppercase;
   text-align: center;
 }
+
+/* Explicit title class for the how-it-works section to match the site H2 style */
+.how-it-works .how-title {
+  font-size: 47px;
+  font-family: Inter;
+  font-weight: 900;
+  font-style: normal;
+  line-height: 50.35px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 20px 0; /* keep some spacing below the title */
+}
 h3 {
   font-size: 22px;
   font-family: Inter;
@@ -282,11 +294,10 @@ header {
   }
 }
 
-/* LAST DAY two-column layout */
 .last-day.two-col {
   display: flex;
   gap: 24px;
-  align-items: stretch; /* make columns equal height so we can align buttons to image bottom */
+  align-items: stretch;
   justify-content: space-between;
 }
 .last-day.two-col .left-col,
@@ -294,7 +305,7 @@ header {
   box-sizing: border-box;
   padding: 20px 0;
 }
-/* equal width by default; adjust via flex values if you want different ratios */
+
 .last-day.two-col .left-col {
   flex: 1;
 }
@@ -302,27 +313,25 @@ header {
   flex: 1;
 }
 
-/* ensure the image in the right column is anchored to the bottom */
 .last-day.two-col .right-col {
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
 
-/* place buttons at the bottom of the left column and arrange horizontally */
 .last-day.two-col .left-col {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* keeps .btn-row at the bottom */
+  justify-content: space-between;
 }
+
 .last-day .btn-row {
   display: flex;
   gap: 12px;
   align-items: center;
-  flex-wrap: wrap; /* allow wrapping on very small screens */
+  flex-wrap: wrap;
 }
 
-/* button style matching site's dark button look */
 .last-day .btn {
   background: var(--dark-gray);
   color: rgb(165, 18, 18);
@@ -337,9 +346,6 @@ header {
   justify-content: center;
 }
 
-/* make .link-btn inside last-day behave like regular buttons (not height:100%) */
-/* left-column buttons will use the global .link-btn rules to match exactly */
-
 @media (max-width: 900px) {
   .last-day .btn-row {
     justify-content: flex-start;
@@ -353,7 +359,6 @@ header {
   }
 }
 
-/* hero image in right column */
 .last-day .hero-img {
   display: block;
   max-width: 100%;
@@ -361,16 +366,14 @@ header {
   object-fit: cover;
 }
 
-/* icon inside buttons */
 .last-day .btn-icon {
-  height: calc(var(--control-height) - 5px); /* slightly smaller than control */
+  height: calc(var(--control-height) - 5px);
   width: auto;
   margin-right: 10px;
   display: inline-block;
   vertical-align: middle;
 }
 
-/* Specific dimensions and layout for the two left-column buttons */
 .last-day .link-btn {
   display: flex;
   width: 260px;
@@ -381,4 +384,201 @@ header {
   gap: 10px;
   flex-shrink: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f8f8;
+  margin: 0;
+  padding: 0;
+}
+
+.benefits {
+  color: #000;
+  /* Section Title */
+  font-family: Inter;
+  font-size: 47px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 50.346px;
+}
+
+.title {
+  /* default title styling; color will be scoped under .benefits below */
+  color: inherit;
+
+  /* Section Title */
+  font-family: Inter;
+  font-size: 47px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 50.346px; /* 107.12% */
+}
+
+/* ensure in the benefits section the title is black and the inner span (TERE) stays green */
+.benefits .title {
+  color: #000000;
+}
+.benefits .title span {
+  color: #75bf7a;
+}
+
+.benefit-card {
+  display: flex;
+  width: 1060px;
+  height: 302.82px;
+  padding: 24px 38px;
+  align-items: center;
+  gap: 262px;
+  flex-shrink: 0;
+}
+
+.benefit-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.benefit-card .text h3 {
+  color: #000;
+  font-family: Inter;
+  font-size: 33.943px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32.5px;
+}
+
+.benefit-card .text h3 span {
+  color: #75bf7a;
+
+  font-family: Inter;
+  font-size: 88px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 118.8px;
+}
+
+.benefit-card p {
+  color: #9e9da2;
+
+  /* Normal */
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+  align-self: stretch;
+}
+
+.benefit-card img {
+  /* fixed square size for benefit illustrations (Benefit 1, Benefit 2, Group) */
+  width: 253.288px;
+  height: 253.288px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .benefit-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .benefit-card.reverse {
+    flex-direction: column;
+  }
+  .benefit-card img {
+    width: 140px;
+  }
+}
+
+/* Footer Container */
+.footer {
+  background: #ffffff;
+  padding: 40px 0;
+  border-top: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+/* ----- TOP SECTION ----- */
+.footer-top {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Logo */
+.footer-logo img {
+  width: 128.701px;
+  height: 36.219px;
+  flex-shrink: 0;
+}
+
+/* Columns */
+.footer-col h4 {
+  color: var(--Dark-gray, #272042);
+  /* Section Subtitle */
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 50.346px; /* 228.847% */
+}
+
+.footer-col p {
+  color: var(--Gray, #8b8ba5);
+  /* Normal */
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px; /* 144.444% */
+}
+
+/* Download buttons */
+.footer-download {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.download-btn {
+  background: #232042;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.download-btn img {
+  width: 18px;
+}
+
+/* ----- BOTTOM SECTION ----- */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-bottom p {
+  color: #7ac975;
+  font-size: 15px;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 900px) {
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-download {
+    justify-content: center;
+  }
 }
